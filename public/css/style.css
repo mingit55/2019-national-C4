@@ -19,7 +19,7 @@ img { pointer-events: none; }
 
 .wrap { max-width: calc(100% - 80px); margin-left: auto; margin-right: auto; }
 .container { max-width: 1140px; margin-left: auto; margin-right: auto; } 
-
+.small-container { max-width: 980px; margin-left: auto; margin-right: auto; }
 
 /* e.t.c */
 .float-left { float: left; }
@@ -77,12 +77,32 @@ img { pointer-events: none; }
 }
 
 /* input */
-input.large-form-control {
+.form-control,
+.large-form-control {
     width: 100%;
-    height: 50px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.form-control::placeholder,
+.large-form-control::placeholder {
+    font-weight: 600;
+    color: #aaa;
+}
+
+.large-form-control {
+    height: 60px;
     padding: 10px 15px;
     border: 1px solid #ddd;
 }
+
+.form-control {
+    height: 40px;
+    padding: 5px 10px;
+    border: 2px solid #ddd;
+}
+
+select.form-control { font-weight: 600; color: #aaa; }
 
 
 /* select */

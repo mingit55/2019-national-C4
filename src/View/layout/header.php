@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="#">출품신청</a>
+                    <a href="/biff-2019/entry">출품신청</a>
                 </div>
                 <div class="nav-item">
                     <a href="#">상영일정</a>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="#">출품신청</a>
+                    <a href="/biff-2019/entry">출품신청</a>
                 </div>
                 <div class="nav-item">
                     <a href="#">상영일정</a>
@@ -83,8 +83,13 @@
                     </div>
                 </div>
                 <div class="auth">
-                    <a href="/users/sign-in" class="text-pale-black pl-0 pr-4">로그인</a>
-                    <a href="/users/sign-up" class="text-pale-black">회원가입</a>
+                    <?php if(user()): ?>
+                        <span class="text-pale-black pl-0 pr-4 fx-n2"><?=user()->user_name?> 님</span>
+                        <a href="/users/logout" class="text-pale-black">로그아웃</a>
+                    <?php else:  ?>
+                        <a href="/users/sign-in" class="text-pale-black pl-0 pr-4">로그인</a>
+                        <a href="/users/sign-up" class="text-pale-black">회원가입</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

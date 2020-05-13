@@ -9,6 +9,7 @@ header {
     width: 100%;
     z-index: 100;
 }
+header + * { margin-top: 80px; }
 
 nav {
     display: flex;

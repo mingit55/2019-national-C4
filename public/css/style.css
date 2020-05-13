@@ -76,6 +76,14 @@ img { pointer-events: none; }
     padding: 0.5em 0.8em;
 }
 
+/* input */
+input.large-form-control {
+    width: 100%;
+    height: 50px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
 
 /* select */
 select.select {

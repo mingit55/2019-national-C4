@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // CONSTANT
 
 define("DS", DIRECTORY_SEPARATOR);

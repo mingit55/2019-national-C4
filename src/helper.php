@@ -31,3 +31,37 @@ function view($pageName, $data = [])
         require($footerPath);
     }
 }
+
+function user()
+{
+    return isset($_SESSION['user']) ? $_SESSION['user'] : false;
+}
+
+function go($url, $message = "")
+{
+    echo "<script>";
+    if($message !== "") echo "alert(\"$message\");";
+    echo "location.href='$url';";
+    echo "</script>";
+    exit;
+}
+
+function back($message = "")
+{
+    echo "<script>";
+    if($message !== "") echo "alert(\"$message\");";
+    echo "history.back();";
+    echo "</script>";
+    exit;
+}
+
+function checkInput()
+{
+    foreach($_POST as $data)
+    {
+        if(trim($data) === "") 
+        {
+            back("모든 값을 입력해 주세요.");
+        }
+    }
+}

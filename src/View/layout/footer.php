@@ -1,6 +1,6 @@
         <!-- FOOTER -->
-        <footer class="bg-light">
-            <div class="container text-pale-black py-5">
+        <footer class="bg-light mhx-250">
+            <div class="container text-pale-black pt-4 pb-3">
                 <div class="d-flex flex-wrap">
                     <div class="split-8 split-sm-12">
                         <div class="d-flex flex-wrap px-sm-4">

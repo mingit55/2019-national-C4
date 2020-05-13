@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>부산국제영화제</title>
-    <link rel="stylesheet" href="./css/layout.css">
-    <link rel="stylesheet" href="./css/sizing.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./fontawesome/css/all.css">
-    <script src="./fontawesome/js/all.js"></script>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/sizing.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.css">
+    <script src="/fontawesome/js/all.js"></script>
 </head>
 <body>
     <!-- HEADER -->
@@ -16,8 +16,8 @@
     <header class="hx-80">
         <div class="wrap d-flex justify-content-between align-items-center h-100 px-sm-4">
             <a href="/">
-                <img src="./images/logo_3.png" alt="부산국제영화제" height="50">
-                <img src="./images/logo-icon.png" alt="부산국제영화제" height="50" class="d-none">
+                <img src="/images/logo_3.png" alt="부산국제영화제" height="50">
+                <img src="/images/logo-icon.png" alt="부산국제영화제" height="50" class="d-none">
             </a>
             <nav class="d-sm-none">
                 <div class="nav-item">
@@ -45,8 +45,13 @@
                 </div>
             </nav>
             <div class="auth-group d-sm-none">
-                <a href="/users/sign-in" class="fx-n2 mr-1">로그인</a>
-                <a href="/users/sign-up" class="fx-n2">회원가입</a>
+                <?php if(user()): ?>
+                    <span class="fx-n2 text-pale-black mr-3"><?=user()->user_name?> 님</span>
+                    <a href="/users/logout" class="fx-n2">로그아웃</a>
+                <?php else:  ?>
+                    <a href="/users/sign-in" class="fx-n2 mr-1">로그인</a>
+                    <a href="/users/sign-up" class="fx-n2">회원가입</a>
+                <?php endif; ?>
             </div>
             <label for="menu-open" class="menu-icon d-none d-sm-block">
                 <span></span>

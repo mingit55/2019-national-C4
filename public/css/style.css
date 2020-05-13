@@ -43,10 +43,17 @@ img { pointer-events: none; }
 .font-weight-bolder { font-weight: bolder; }
 
 .overflow-hidden { overflow: hidden; }
+.overflow-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
 .position-relative { position: relative; }
 .position-absolute { position: absolute; }
 .position-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+.position-date { position: absolute; left: 20px; top: 20px; }
 
 .pointer { cursor: pointer; }
 

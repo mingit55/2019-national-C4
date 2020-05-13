@@ -31,7 +31,7 @@
                     <a href="/biff-2019/entry">출품신청</a>
                 </div>
                 <div class="nav-item">
-                    <a href="#">상영일정</a>
+                    <a href="/biff-2019/calender">상영일정</a>
                 </div>
                 <div class="nav-item">
                     <a href="#">상영작검색</a>
@@ -70,7 +70,7 @@
                     <a href="/biff-2019/entry">출품신청</a>
                 </div>
                 <div class="nav-item">
-                    <a href="#">상영일정</a>
+                    <a href="/biff-2019/calender">상영일정</a>
                 </div>
                 <div class="nav-item">
                     <a href="#">상영작검색</a>

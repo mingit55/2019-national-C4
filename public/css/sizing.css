@@ -32,6 +32,7 @@
 .wx-400 { width: 400px!important; }
 
 .split-1 { max-width: calc(100% * 1 / 12); flex: calc(100% * 1 / 12); }
+.split-1-7 { max-width: calc(100% / 7); flex: calc(100% / 7); }
 .split-2 { max-width: calc(100% * 2 / 12); flex: calc(100% * 2 / 12); }
 .split-3 { max-width: calc(100% * 3 / 12); flex: calc(100% * 3 / 12); }
 .split-4 { max-width: calc(100% * 4 / 12); flex: calc(100% * 4 / 12); }

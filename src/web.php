@@ -16,6 +16,8 @@ Route::get("/biff-2019/calender", "ScheduleController@calenderPage");
 Route::get("/schedules/application", "ScheduleController@applicationPage");
 Route::post("/schedules/application", "ScheduleController@addSchedule");
 
+Route::get("/schedules/{date}", "ScheduleController@detailPage");
+
 Route::get("/biff-2019/schedules", "ScheduleController@getSchedule");
 
 Route::get("/users/sign-in", "UserController@signInPage");

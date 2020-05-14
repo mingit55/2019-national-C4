@@ -14,6 +14,21 @@ class ScheduleController {
         view("schedules/application", ["entries" => $entries]);
     }
 
+    function detailPage($date){
+        if(preg_match("/^(?<year>[0-9]{4})-(?<month>[0-9]{1,2})-(?<date>[0-9]{1,2})$/", $date, $matches)) {
+            $findStart = $date . " 00:00:00";
+            $findEnd = $date . " 23:59:59";
+
+            $sql = "SELECT E.*, S.start_time, S.end_time 
+                    FROM schedules S LEFT JOIN  entries E ON E.id = S.movie_id
+                    WHERE TIMESTAMP(?) <= TIMESTAMP(S.start_time) AND TIMESTAMP(S.end_time) <= TIMESTAMP(?)";
+            $schedules = DB::fetchAll($sql, [$findStart, $findEnd]);
+
+            view("schedules/detail", ["date" => $date, "list" => $schedules]);
+        }
+        else http_response_code(404);
+    }
+
     function getSchedule(){
         if(isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] <= 0){
             $schedule = DB::find("schedules", $_GET['id']);
@@ -59,7 +74,7 @@ class ScheduleController {
         $startTime = date("Y-m-d H:i:s", $timestamp);
         $endTime = date("Y-m-d H:i:s", $timestamp + ($entry->running_time * 60));
 
-        $overlap = DB::fetch("SELECT * FROM schedules WHERE TIMESTAMP(start_time) <= TIMESTAMP(?) AND TIMESTAMP(?) <= TIMESTAMP(end_time)", [$startTime, $endTime]);
+        $overlap = DB::fetch("SELECT * FROM schedules WHERE TIMESTAMP(start_time) <= TIMESTAMP(?) AND TIMESTAMP(?) <= TIMESTAMP(end_time)", [$endTime, $startTime]);
         
         if($overlap) {
             back("해당 일시에 이미 예약된 영화가 존재합니다.");

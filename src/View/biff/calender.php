@@ -110,34 +110,45 @@
 
                 for(let i = firstD.getDay(); i > 0; i--){
                     let day = lastDLastM.getDate() - i - 1;
-                    let schedules = list[0].filter(item => item.date.parseDate() == new Date(lastDLastM.getFullYear(), lastDLastM.getMonth(), day).parseDate());
+                    let schedules = list[0].find(item => item.date.parseDate() == new Date(lastDLastM.getFullYear(), lastDLastM.getMonth(), day).parseDate());
+                    let $schedules = schedules ? schedules.list.slice(0, 3).map(data => `<p class="w-100 px-3 overflow-ellipsis">${data.title}</p>`) : "";
 
                     let elem = document.createElement("div");
                     elem.classList.add("split-1-7", "p-1");
                     elem.innerHTML = `<div class="text-muted text-center hx-150 position-relative d-flex flex-column pt-5">
                                         <span class="position-date font-weight-bold fx-2 text-muted">${day}</span>
-                                        <p class="w-100 px-3 overflow-ellipsis"></p>
+                                        ${$schedules}
                                     </div>`;
                     this.$body.append(elem);
                 }
 
                 for(let i = 1; i <= lastD.getDate(); i++){
+                    let date = new Date(this.now.getFullYear(), this.now.getMonth(), i).parseDate();
+                    let schedules = list[1].find(item => item.date.parseDate() == date);
+                    let $schedules = schedules ? schedules.list.slice(0, 3).map(data => `<p class="w-100 px-3 overflow-ellipsis">${data.title}</p>`) : [];
+
                     let elem = document.createElement("div");
+                    elem.addEventListener("click", e => {
+                        location.assign("/schedules/" + date); 
+                    });
                     elem.classList.add("split-1-7", "p-1");
                     elem.innerHTML = `<div class="text-black text-center hx-150 position-relative d-flex flex-column pt-5">
                                         <span class="position-date font-weight-bold fx-2 text-black">${i}</span>
-                                        <p class="w-100 px-3 overflow-ellipsis"></p>
+                                        ${$schedules.join("")}
                                     </div>`;
                     this.$body.append(elem);
                 }
 
                 for(let i = lastD.getDay(); i < 6; i++){
                     let day = i - lastD.getDay() + 1;
+                    let schedules = list[0].find(item => item.date.parseDate() == new Date(firstDNextM.getFullYear(), firstDNextM.getMonth(), day).parseDate());
+                    let $schedules = schedules ? schedules.list.slice(0, 3).map(data => `<p class="w-100 px-3 overflow-ellipsis">${data.title}</p>`) : "";
+
                     let elem = document.createElement("div");
                     elem.classList.add("split-1-7", "p-1");
                     elem.innerHTML = `<div class="text-muted text-center hx-150 position-relative d-flex flex-column pt-5">
                                         <span class="position-date font-weight-bold fx-2 text-muted">${day}</span>
-                                        <p class="w-100 px-3 overflow-ellipsis"></p>
+                                        ${$schedules}
                                     </div>`;
                     this.$body.append(elem);
                 }

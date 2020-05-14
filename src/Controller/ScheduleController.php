@@ -2,6 +2,7 @@
 namespace Controller;
 
 use App\DB;
+use App\ExcelWriter;
 
 class ScheduleController {
     function calenderPage(){
@@ -27,6 +28,26 @@ class ScheduleController {
             view("schedules/detail", ["date" => $date, "list" => $schedules]);
         }
         else http_response_code(404);
+    }
+
+    function downloadSchedules($date){
+        if(preg_match("/^(?<year>[0-9]{4})-(?<month>[0-9]{1,2})-(?<date>[0-9]{1,2})$/", $date, $matches)) {
+            $findStart = $date . " 00:00:00";
+            $findEnd = $date . " 23:59:59";
+
+            $sql = "SELECT E.*, S.start_time, S.end_time 
+                    FROM schedules S LEFT JOIN  entries E ON E.id = S.movie_id
+                    WHERE TIMESTAMP(?) <= TIMESTAMP(S.start_time) AND TIMESTAMP(S.end_time) <= TIMESTAMP(?)";
+            $schedules = DB::fetchAll($sql, [$findStart, $findEnd]);
+
+            $table = [["출품자 이름", "아이디", "영화 제목", "러닝타임", "제작연도", "분류"]];
+            foreach($schedules as $schedule){
+                $table[] = [$schedule->user_name, $schedule->user_id, $schedule->title, $schedule->running_time, $schedule->created_at, $schedule->type];
+            }
+            
+            $ew = new ExcelWriter();
+            $ew->write($table)->save()->download();
+        }
     }
 
     function getSchedule(){

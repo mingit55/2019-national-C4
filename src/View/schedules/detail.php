@@ -39,4 +39,7 @@
                 <?php endif;?>
             </div>
         </div>
+        <div class="text-center mt-5">
+            <a href="/schedules/download/<?=$date?>" class="bg-black text-white fx-n1 border-none px-4 py-2">내보내기</a>
+        </div>
     </div>

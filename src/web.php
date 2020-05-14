@@ -17,6 +17,7 @@ Route::get("/schedules/application", "ScheduleController@applicationPage", "admi
 Route::post("/schedules/application", "ScheduleController@addSchedule", "admin");
 
 Route::get("/schedules/{date}", "ScheduleController@detailPage");
+Route::get("/schedules/download/{date}", "ScheduleController@downloadSchedules");
 
 Route::get("/biff-2019/schedules", "ScheduleController@getSchedule");
 

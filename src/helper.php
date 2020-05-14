@@ -37,6 +37,10 @@ function user()
     return isset($_SESSION['user']) ? $_SESSION['user'] : false;
 }
 
+function admin(){
+    return user() && user()->auth == 1 ? user() : false;
+}
+
 function go($url, $message = "")
 {
     echo "<script>";
@@ -64,4 +68,10 @@ function checkInput()
             back("모든 값을 입력해 주세요.");
         }
     }
+}
+
+function json_response($data, $status = true){
+    header("Content-Type: application/json");
+    echo json_encode(['data' => $data, 'status' => $status], JSON_UNESCAPED_UNICODE);
+    exit;
 }

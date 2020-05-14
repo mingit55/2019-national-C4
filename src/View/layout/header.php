@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/fontawesome/css/all.css">
     <script src="/fontawesome/js/all.js"></script>
+    <?= join("", $addition_head) ?>
 </head>
 <body>
     <!-- HEADER -->
@@ -40,7 +41,7 @@
                     <a href="#">이벤트</a>
                     <div class="sub">
                         <a href="#">영화티저 콘테스트</a>
-                        <a href="/event/participation">콘테스트 참여하기</a>
+                        <a href="/events/participation">콘테스트 참여하기</a>
                     </div>
                 </div>
             </nav>
@@ -79,7 +80,7 @@
                     <a href="#">이벤트</a>
                     <div class="sub">
                         <a href="#">영화티저 콘테스트</a>
-                        <a href="/event/participation">콘테스트 참여하기</a>
+                        <a href="/events/participation">콘테스트 참여하기</a>
                     </div>
                 </div>
                 <div class="auth">

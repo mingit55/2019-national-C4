@@ -16,7 +16,7 @@ function dd()
     exit;
 }
 
-function view($pageName, $data = [])
+function view($pageName, $data = [], $addition_head = [])
 {
     extract($data);
     $pageName = str_replace("/", DS, $pageName);

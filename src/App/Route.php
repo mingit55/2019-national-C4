@@ -35,6 +35,10 @@ class Route
             $regex = preg_replace("/\//", "\\/", $regex);
             if(preg_match("/^{$regex}$/", $currentURL, $matches))
             {
+                if($page->permission === "guest" && user()) back("로그인 이후에는 이용하실 수 없습니다.");
+                else if($page->permission === "user" && !user()) go("/users/sign-in", "로그인 후에 이용하실 수 있습니다.");
+                else if($page->permission === "admin" && !admin()) back("관리자만 접근할 수 있는 페이지 입니다.");
+
                 unset($matches[0]);
                 $split = explode("@", $page->action);
                 $conName = "Controller\\" . $split[0];

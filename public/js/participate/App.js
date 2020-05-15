@@ -43,11 +43,10 @@ class App {
         // 영화 커버 이미지를 클릭했을 때
         this.$movieArea.querySelectorAll("img").forEach((img, idx) => {
             img.addEventListener("click", e => {
-                let url = `/videos/movie${idx + 1}.mp4`;
-                let track = this.viewer.hasTrack(url)
+                let track = this.viewer.hasTrack(idx)
                 if(track) this.viewer.loadTrack(track);
                 else {
-                    track = new Track(this, url);
+                    track = new Track(this, idx);
                     this.viewer.trackList.push(track);
                     this.viewer.loadTrack(track);
                 }
@@ -93,7 +92,12 @@ class App {
             .addEventListener("click", e => this.isMovieLoaded() && this.merge());
     }
 
-    download(){
+    parseHTML(){
+        if(!this.viewer.currentTrack){
+            alert("영화를 먼저 선택해 주세요!");
+            return false;
+        }
+
         let $clipList = this.viewer.currentTrack.clipList.reduce((p, c) => p + `<img src="${c.toDataURL()}" alt="clip-item" data-start="${c.startTime}" data-duration="${c.duration}" />`, "");
         let htmlFormat = `<style>
                             #viewer {
@@ -174,6 +178,11 @@ class App {
                                 });
                             });
                         </script>`;
+        return htmlFormat;
+    }
+
+    download(){
+        let htmlFormat = this.parseHTML();
         let data = new Blob([htmlFormat], {type: "text/html"});
         let url = URL.createObjectURL(data);
 
@@ -238,7 +247,3 @@ class App {
         return elem.firstElementChild;
     }
 }   
-
-window.addEventListener("load", () => {
-    const editor = new App();
-});

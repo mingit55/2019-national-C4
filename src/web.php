@@ -15,6 +15,8 @@ Route::get("/biff-2019/entry-graph", "EntryController@entryGraph", "user");
 
 Route::get("/biff-2019/calender", "ScheduleController@calenderPage");
 
+Route::get("/biff-2019/search", "ScheduleController@searchPage");
+
 // schedules
 
 Route::get("/schedules/application", "ScheduleController@applicationPage", "admin");
@@ -25,9 +27,16 @@ Route::get("/schedules/download/{date}", "ScheduleController@downloadSchedules")
 
 Route::get("/biff-2019/schedules", "ScheduleController@getSchedule");
 
+
 // events
 
 Route::get("/events/participation", "EventController@participatePage");
+Route::post("/events/participation", "EventController@participation", "user");
+
+Route::get("/events/teaser-contest", "EventController@listPage");
+Route::get("/events/teaser-contest/{id}", "EventController@detailPage");
+
+Route::post("/events/teasers/{id}", "EventController@updateScore");
 
 
 // users

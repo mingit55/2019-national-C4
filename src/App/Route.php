@@ -32,7 +32,7 @@ class Route
         foreach(self::${$method} as $page)
         {
             $regex = preg_replace("/{([^\/]+)}/", "([^/]+)", $page->url);
-            $regex = preg_replace("/\//", "\\/", $regex);
+            $regex = preg_replace("/\//", "\\/", $regex); 
             if(preg_match("/^{$regex}$/", $currentURL, $matches))
             {
                 if($page->permission === "guest" && user()) back("로그인 이후에는 이용하실 수 없습니다.");

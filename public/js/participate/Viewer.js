@@ -82,8 +82,8 @@ class Viewer {
     }
 
 
-    hasTrack(videoURL){
-        return this.trackList.find(track => track.url == videoURL);
+    hasTrack(movie_id){
+        return this.trackList.find(track => track.movie_id == movie_id);
     }
 
     loadTrack(track){

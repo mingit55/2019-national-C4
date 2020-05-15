@@ -35,12 +35,12 @@
                     <a href="/biff-2019/calender">상영일정</a>
                 </div>
                 <div class="nav-item">
-                    <a href="#">상영작검색</a>
+                    <a href="/biff-2019/search">상영작검색</a>
                 </div>
                 <div class="nav-item">
                     <a href="#">이벤트</a>
                     <div class="sub">
-                        <a href="#">영화티저 콘테스트</a>
+                        <a href="/events/teaser-contest">영화티저 콘테스트</a>
                         <a href="/events/participation">콘테스트 참여하기</a>
                     </div>
                 </div>
@@ -74,12 +74,12 @@
                     <a href="/biff-2019/calender">상영일정</a>
                 </div>
                 <div class="nav-item">
-                    <a href="#">상영작검색</a>
+                    <a href="/biff-2019/search">상영작검색</a>
                 </div>
                 <div class="nav-item has-sub">
                     <a href="#">이벤트</a>
                     <div class="sub">
-                        <a href="#">영화티저 콘테스트</a>
+                        <a href="/events/teaser-contest">영화티저 콘테스트</a>
                         <a href="/events/participation">콘테스트 참여하기</a>
                     </div>
                 </div>

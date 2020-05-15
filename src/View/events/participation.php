@@ -101,6 +101,29 @@
                         </div>
                     </div>
                 </div>
+                <form id="part-form" class="text-center mt-5" method="post">
+                    <input type="hidden" id="movie_id" name="movie_id">
+                    <input type="hidden" id="video_html" name="video_html">
+                    <hr class="rotate mb-4">
+                    <p class="mb-4 fx-n1 text-black">편집한 영상으로 콘테스트에 참여해 보세요!</p>
+                    <button id="btn-part" class="px-4 py-3 bg-red border-none text-white fx-n1">콘테스트 참여하기</button>
+                </form>
             </div>
         </div>
         <!-- /PARTICIPATION -->
+
+        <script>
+            window.addEventListener("load", () => {
+                const editor = new App();
+                
+                document.querySelector("#part-form").addEventListener("submit", function(e){
+                    e.preventDefault();
+                    let videoHTML = editor.parseHTML();
+                    if(videoHTML) {
+                        document.querySelector("#movie_id").value = editor.viewer.currentTrack.movie_id;
+                        document.querySelector("#video_html").value = videoHTML;
+                        this.submit();
+                    }
+                });
+            });
+        </script>

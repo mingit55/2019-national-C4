@@ -75,3 +75,7 @@ function json_response($data, $status = true){
     echo json_encode(['data' => $data, 'status' => $status], JSON_UNESCAPED_UNICODE);
     exit;
 }
+
+function movieName($movie_id){
+    return ["기생충", "극한직업", "롱리브 더 킹", "나랏말싸미"," 봉오동 전투"][$movie_id - 1];
+}

@@ -30,6 +30,10 @@ class ScheduleController {
         else http_response_code(404);
     }
 
+    function searchPage(){
+        view("schedules/search");
+    }
+
     function downloadSchedules($date){
         if(preg_match("/^(?<year>[0-9]{4})-(?<month>[0-9]{1,2})-(?<date>[0-9]{1,2})$/", $date, $matches)) {
             $findStart = $date . " 00:00:00";
@@ -74,6 +78,12 @@ class ScheduleController {
                     AND TIMESTAMP(?) <= TIMESTAMP(S.start_time) AND TIMESTAMP(S.start_time) < TIMESTAMP(?)";
 
             $schedules = DB::fetchAll($sql, [$start_date, $end_date]);
+            json_response($schedules);
+        } else {
+            $sql = "SELECT E.*, S.start_time, S.end_time
+                    FROM schedules S LEFT JOIN entries E ON S.movie_id = E.id";
+            $schedules = DB::fetchAll($sql);
+
             json_response($schedules);
         }
     }

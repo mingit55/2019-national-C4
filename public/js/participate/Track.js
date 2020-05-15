@@ -1,13 +1,14 @@
 class Track {
-    constructor(app, url){
+    constructor(app, idx){
         this.app = app;
         this.viewer = app.viewer;
-        this.url = url;
+        this.movie_id = idx;
+        this.url = `/videos/movie${idx + 1}.mp4`;
         this.clipList = [];
         this.pickList = [];
 
         this.$video = document.createElement("video");
-        this.$video.src = url;
+        this.$video.src = this.url;
         this.$video.onloadedmetadata = () => {
             this.currentTime = 0;
             this.duration = this.$video.duration;
